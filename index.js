@@ -24,6 +24,7 @@ app.post('/',async (request, res) => {
 
 })
 
-app.listen(3000, () => {
-    console.log('Server has started on port 3000...')
-})
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log('Express server listening on port', port)
+});
