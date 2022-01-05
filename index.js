@@ -15,8 +15,13 @@ app.get('/', (request, res) => {
 app.post('/',async (request, res) => {
     const { city } = request.body
 
-    const {weather, error} = await weatherRequest(city)
-    res.render('index', {weather, error})
+    try {
+        const {weather, error} = await weatherRequest(city)
+        res.render('index', {weather, error})
+    } catch (error) {
+        res.redirect('/')
+    }
+
 })
 
 app.listen(3000, () => {
